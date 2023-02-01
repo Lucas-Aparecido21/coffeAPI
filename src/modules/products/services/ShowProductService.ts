@@ -1,0 +1,24 @@
+import { getCustomRepository } from "typeorm";
+import Product from "../typeorm/entities/Product";
+
+import { ProductRepository } from "../typeorm/repositories/ProductsRepository";
+
+interface IRequest {
+  id: string;
+}
+
+class ShowProductService {
+  public async execute({ id }: IRequest): Promise<Product> {
+    const productsRepository = getCustomRepository(ProductRepository);
+
+    const products = await productsRepository.findOne(id);
+
+    if (!products) {
+      throw new Error("Product not found");
+    }
+
+    return products;
+  }
+}
+
+export default ShowProductService;
