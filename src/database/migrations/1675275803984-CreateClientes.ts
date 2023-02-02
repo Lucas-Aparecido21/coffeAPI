@@ -25,30 +25,29 @@ export class CreateClientes1675275803984 implements MigrationInterface {
           {
             name: "cep",
             type: "string",
-            isNullable: true,
           },
           {
             name: "rua",
             type: "string",
-            isNullable: true,
           },
           {
             name: "cidade",
             type: "string",
-            isNullable: true,
           },
           {
             name: "bairro",
             type: "string",
-            isNullable: true,
           },
           {
             name: "uf",
             type: "string",
-            isNullable: true,
           },
           {
             name: "numero",
+            type: "string",
+          },
+          {
+            name: "complemento",
             type: "string",
             isNullable: true,
           },

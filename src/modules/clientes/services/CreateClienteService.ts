@@ -6,10 +6,26 @@ interface IRequest {
   cpf: string;
   nome: string;
   telefone: string;
+  cep: string;
+  rua: string;
+  bairro: string;
+  cidade: string;
+  numero: string;
+  uf: string;
 }
 
 class CreateClienteService {
-  public async execute({ cpf, nome, telefone }: IRequest): Promise<Clientes> {
+  public async execute({
+    cpf,
+    nome,
+    telefone,
+    bairro,
+    cep,
+    cidade,
+    numero,
+    rua,
+    uf,
+  }: IRequest): Promise<Clientes> {
     const clientesRepository = getCustomRepository(ClienteRepository);
     const clienteExist = await clientesRepository.findByID(cpf);
 
@@ -21,6 +37,12 @@ class CreateClienteService {
       cpf,
       nome,
       telefone,
+      bairro,
+      cep,
+      cidade,
+      numero,
+      rua,
+      uf,
     });
 
     await clientesRepository.save(cliente);

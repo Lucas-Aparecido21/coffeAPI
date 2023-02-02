@@ -6,10 +6,26 @@ interface IRequest {
   cpf: string;
   nome: string;
   telefone: string;
+  rua: string;
+  cep: string;
+  cidade: string;
+  bairro: string;
+  uf: string;
+  numero: string;
 }
 
 class UpdateClienteService {
-  public async execute({ cpf, nome, telefone }: IRequest): Promise<Clientes> {
+  public async execute({
+    cpf,
+    nome,
+    telefone,
+    cep,
+    bairro,
+    cidade,
+    numero,
+    rua,
+    uf,
+  }: IRequest): Promise<Clientes> {
     const clientesRepository = getCustomRepository(ClienteRepository);
 
     const clientes = await clientesRepository.findOne(cpf);
@@ -27,6 +43,12 @@ class UpdateClienteService {
     clientes.cpf = cpf;
     clientes.nome = nome;
     clientes.telefone = telefone;
+    clientes.cep = cep;
+    clientes.rua = rua;
+    clientes.cidade = cidade;
+    clientes.bairro = bairro;
+    clientes.uf = uf;
+    clientes.numero = numero;
 
     await clientesRepository.save(clientes);
     return clientes;
