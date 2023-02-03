@@ -1,7 +1,10 @@
+import Clientes from "@modules/clientes/typeorm/entities/Clientes";
 import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
+  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
@@ -11,8 +14,12 @@ class Pedido {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
-  cpfCliente: string;
+  // @Column()
+  // cpfCliente: string;
+
+  @ManyToOne(() => Clientes, (clientes) => clientes.pedidos)
+  @JoinColumn({ name: "cpf" })
+  clientes: Clientes;
 
   @Column("decimal")
   valor: number;

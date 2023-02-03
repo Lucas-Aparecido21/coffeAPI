@@ -1,7 +1,9 @@
+import Pedido from "@modules/pedidos/typeorm/entities/Pedido";
 import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryColumn,
   UpdateDateColumn,
 } from "typeorm";
@@ -40,6 +42,9 @@ class Clientes {
 
   @UpdateDateColumn()
   update_at: Date;
+
+  @OneToMany(() => Pedido, (pedidos) => pedidos.clientes)
+  pedidos: Pedido[];
 }
 
 export default Clientes;
