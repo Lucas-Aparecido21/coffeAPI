@@ -4,18 +4,13 @@ import { PedidoRepository } from "../typeorm/repositories/PedidoRepository";
 
 interface IRequest {
   id: number;
-  cpfCliente: string;
+
   valor: number;
   entrega: number;
 }
 
 class UpdatePedidoService {
-  public async execute({
-    id,
-    cpfCliente,
-    valor,
-    entrega,
-  }: IRequest): Promise<Pedido> {
+  public async execute({ id, valor, entrega }: IRequest): Promise<Pedido> {
     const pedidosRepository = await getCustomRepository(PedidoRepository);
 
     const pedidos = await pedidosRepository.findOne(id);
@@ -24,7 +19,6 @@ class UpdatePedidoService {
       throw new Error("Pedido não localizado");
     }
 
-    pedidos.cpfCliente = cpfCliente;
     pedidos.entrega = entrega;
     pedidos.valor = valor;
 

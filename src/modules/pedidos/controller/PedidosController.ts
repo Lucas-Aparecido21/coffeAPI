@@ -5,7 +5,6 @@ import DeletePedidoService from "../services/DeletePedidoService";
 import ListPedidoService from "../services/ListPedidoService";
 import ShowPedidoService from "../services/ShowPedidoService";
 import UpdatePedidoService from "../services/UpdatePedidoService";
-import Pedido from "../typeorm/entities/Pedido";
 
 export default class PedidosController {
   public async index(request: Request, response: Response): Promise<Response> {
@@ -26,12 +25,10 @@ export default class PedidosController {
   }
 
   public async create(request: Request, response: Response): Promise<Response> {
-    const { id, cpfCliente, valor, entrega } = request.body;
+    const { valor, entrega } = request.body;
     const createPedido = new CreatePedidoService();
 
     const pedido = await createPedido.execute({
-      id,
-      cpfCliente,
       valor,
       entrega,
     });
@@ -40,13 +37,13 @@ export default class PedidosController {
   }
 
   public async update(request: Request, response: Response): Promise<Response> {
-    const { cpfCliente, valor, entrega } = request.body;
+    const { valor, entrega } = request.body;
     const { id } = request.params;
 
     const updatePedido = new UpdatePedidoService();
     const pedido = await updatePedido.execute({
       id: Number(id),
-      cpfCliente,
+
       valor,
       entrega,
     });

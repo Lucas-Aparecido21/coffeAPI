@@ -1,4 +1,4 @@
-import Clientes from "@modules/clientes/typeorm/entities/Clientes";
+import Clientes from "../../../../modules/clientes/typeorm/entities/Clientes";
 import {
   Column,
   CreateDateColumn,
@@ -13,9 +13,6 @@ import {
 class Pedido {
   @PrimaryGeneratedColumn()
   id: number;
-
-  // @Column()
-  // cpfCliente: string;
 
   @ManyToOne(() => Clientes, (clientes) => clientes.pedidos)
   @JoinColumn({ name: "cpf" })
@@ -32,6 +29,7 @@ class Pedido {
 
   @UpdateDateColumn()
   update_at: Date;
+  itens: any;
 }
 
 export default Pedido;

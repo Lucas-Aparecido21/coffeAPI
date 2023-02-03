@@ -1,4 +1,4 @@
-import Pedido from "@modules/pedidos/typeorm/entities/Pedido";
+import Pedido from "../../../../modules/pedidos/typeorm/entities/Pedido";
 import {
   Column,
   CreateDateColumn,
@@ -7,6 +7,7 @@ import {
   PrimaryColumn,
   UpdateDateColumn,
 } from "typeorm";
+import Item from "../../../../modules/itens/typeorm/entities/Item";
 
 @Entity("clientes")
 class Clientes {
@@ -45,6 +46,9 @@ class Clientes {
 
   @OneToMany(() => Pedido, (pedidos) => pedidos.clientes)
   pedidos: Pedido[];
+
+  @OneToMany(() => Item, (itens) => itens.clientes)
+  itens: Item[];
 }
 
 export default Clientes;
