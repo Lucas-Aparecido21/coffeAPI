@@ -49,6 +49,7 @@ class Clientes {
 
   @OneToMany(() => Item, (itens) => itens.clientes)
   itens: Item[];
+  static cpf: any;
 }
 
 export default Clientes;

@@ -15,6 +15,7 @@ class CreatePedidoService {
       entrega,
       valor,
     });
+
     await pedidosRepository.save(pedido);
     return pedido;
   }

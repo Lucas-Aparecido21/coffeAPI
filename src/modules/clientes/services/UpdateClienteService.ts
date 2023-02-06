@@ -1,3 +1,4 @@
+import AppError from "@shared/errors/AppError";
 import { getCustomRepository } from "typeorm";
 import Clientes from "../typeorm/entities/Clientes";
 import { ClienteRepository } from "../typeorm/repositories/ClienteRepository";
@@ -31,13 +32,13 @@ class UpdateClienteService {
     const clientes = await clientesRepository.findOne(cpf);
 
     if (!clientes) {
-      throw new Error("Cliente não encontrado.");
+      throw new AppError("Cliente não encontrado.");
     }
 
     const clienteExists = await clientesRepository.findByID(cpf);
 
     if (clienteExists && cpf !== clientes.cpf) {
-      throw new Error("Já existe um cliente com este CPF.");
+      throw new AppError("Já existe um cliente com este CPF.");
     }
 
     clientes.cpf = cpf;

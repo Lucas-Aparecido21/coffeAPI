@@ -1,3 +1,4 @@
+import AppError from "@shared/errors/AppError";
 import { getCustomRepository } from "typeorm";
 import Clientes from "../typeorm/entities/Clientes";
 import { ClienteRepository } from "../typeorm/repositories/ClienteRepository";
@@ -13,7 +14,7 @@ class ShowClienteService {
     const clientes = await clientesRepository.findOne(cpf);
 
     if (!clientes) {
-      throw new Error("Cliente não encontrado");
+      throw new AppError("Cliente não encontrado");
     }
     return clientes;
   }
