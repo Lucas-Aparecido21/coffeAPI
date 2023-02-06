@@ -12,6 +12,7 @@ interface IRequest {
   cidade: string;
   numero: string;
   uf: string;
+  complemento: string;
 }
 
 class CreateClienteService {
@@ -25,6 +26,7 @@ class CreateClienteService {
     numero,
     rua,
     uf,
+    complemento,
   }: IRequest): Promise<Clientes> {
     const clientesRepository = getCustomRepository(ClienteRepository);
     const clienteExist = await clientesRepository.findByID(cpf);

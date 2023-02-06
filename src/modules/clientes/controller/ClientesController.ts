@@ -25,8 +25,18 @@ export default class ClientesController {
   }
 
   public async create(request: Request, response: Response): Promise<Response> {
-    const { cpf, nome, telefone, cep, bairro, cidade, numero, rua, uf } =
-      request.body;
+    const {
+      cpf,
+      nome,
+      telefone,
+      cep,
+      bairro,
+      cidade,
+      numero,
+      rua,
+      uf,
+      complemento,
+    } = request.body;
     const createCliente = new CreateClienteService();
 
     const cliente = await createCliente.execute({
@@ -39,6 +49,7 @@ export default class ClientesController {
       numero,
       rua,
       uf,
+      complemento,
     });
     return response.json(cliente);
   }

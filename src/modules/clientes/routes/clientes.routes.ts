@@ -24,6 +24,13 @@ clientesRouter.post(
       cpf: Joi.string().required(),
       nome: Joi.string().required(),
       telefone: Joi.string().required(),
+      cep: Joi.string().required(),
+      rua: Joi.string().required(),
+      cidade: Joi.string().required(),
+      bairro: Joi.string().required(),
+      uf: Joi.string().required(),
+      numero: Joi.string().required(),
+      complemento: Joi.string(),
     },
   }),
   clientesController.create
