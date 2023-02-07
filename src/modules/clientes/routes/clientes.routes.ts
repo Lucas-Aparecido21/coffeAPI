@@ -40,16 +40,15 @@ clientesRouter.put(
   "/:cpf",
   celebrate({
     [Segments.BODY]: {
-      cpf: Joi.string().required(),
-      // nome: Joi.string()
-      // telefone: Joi.string(),
-      // cep: Joi.string(),
-      // rua: Joi.string(),
-      // cidade: Joi.string(),
-      // bairro: Joi.string(),
-      // uf: Joi.string(),
-      // numero: Joi.string(),
-      // complemento: Joi.string(),
+      nome: Joi.string(),
+      telefone: Joi.string(),
+      cep: Joi.string(),
+      rua: Joi.string(),
+      cidade: Joi.string(),
+      bairro: Joi.string(),
+      uf: Joi.string(),
+      numero: Joi.string(),
+      complemento: Joi.string(),
     },
     [Segments.PARAMS]: {
       cpf: Joi.string().required(),

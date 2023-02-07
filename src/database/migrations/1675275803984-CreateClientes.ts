@@ -11,6 +11,7 @@ export class CreateClientes1675275803984 implements MigrationInterface {
             name: "cpf",
             type: "string",
             isPrimary: true,
+            isUnique: true,
           },
 
           {
