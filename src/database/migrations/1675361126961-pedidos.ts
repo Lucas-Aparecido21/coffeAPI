@@ -8,13 +8,14 @@ export class pedidos1675361126961 implements MigrationInterface {
         columns: [
           {
             name: "id",
-            type: "number",
+            type: "integer",
             isPrimary: true,
+            isGenerated: true,
             generationStrategy: "increment",
           },
 
           {
-            name: "cpf",
+            name: "cpf_id",
             type: "string",
           },
 
@@ -42,10 +43,10 @@ export class pedidos1675361126961 implements MigrationInterface {
 
         foreignKeys: [
           {
-            name: "cpf",
+            name: "cpf_id",
             referencedTableName: "clientes",
             referencedColumnNames: ["cpf"],
-            columnNames: ["cpf"],
+            columnNames: ["cpf_id"],
             onDelete: "CASCADE",
             onUpdate: "CASCADE",
           },

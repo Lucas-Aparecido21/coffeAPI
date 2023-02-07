@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import { number } from "joi";
 import CreatePedidoService from "../services/CreatePedidoService";
 import DeletePedidoService from "../services/DeletePedidoService";
 import ListPedidoService from "../services/ListPedidoService";
@@ -25,17 +24,22 @@ export default class PedidosController {
   }
 
   public async create(request: Request, response: Response): Promise<Response> {
-    const { valor, entrega } = request.body;
-    const { cpf } = request.params;
-    const createPedido = new CreatePedidoService();
+    try {
+      const { valor, entrega } = request.body;
+      const { cpf_id } = request.params;
+      const createPedido = new CreatePedidoService();
 
-    const pedido = await createPedido.execute({
-      cpf,
-      valor,
-      entrega,
-    });
+      const pedido = await createPedido.execute({
+        cpf_id,
+        valor,
+        entrega,
+      });
 
-    return response.json(pedido);
+      return response.json(pedido);
+    } catch (error) {
+      console.error(error);
+      return response.status(500).json();
+    }
   }
 
   public async update(request: Request, response: Response): Promise<Response> {

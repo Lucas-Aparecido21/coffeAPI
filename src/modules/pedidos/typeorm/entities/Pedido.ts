@@ -11,12 +11,15 @@ import {
 
 @Entity("pedidos")
 class Pedido {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn("increment")
   id: number;
 
   @ManyToOne(() => Clientes, (clientes) => clientes.pedidos)
-  @JoinColumn({ name: "cpf" })
-  clientes: Clientes;
+  @JoinColumn({ name: "cpf_id" })
+  cliente: Clientes;
+
+  @Column()
+  cpf_id: string;
 
   @Column("decimal")
   valor: number;

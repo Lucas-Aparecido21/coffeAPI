@@ -18,12 +18,14 @@ pedidosRouter.get(
 );
 
 pedidosRouter.post(
-  "/",
+  "/:cpf_id",
   celebrate({
     [Segments.BODY]: {
-      cpf: Joi.string().required(),
       valor: Joi.number().required(),
       entrega: Joi.number().required(),
+    },
+    [Segments.PARAMS]: {
+      cpf_id: Joi.string().required(),
     },
   }),
   pedidosController.create
@@ -33,10 +35,8 @@ pedidosRouter.put(
   "/:id",
   celebrate({
     [Segments.BODY]: {
-      id: Joi.number().required(),
-      cpf: Joi.string().required(),
-      valor: Joi.number().required(),
-      entrega: Joi.number().required(),
+      valor: Joi.number(),
+      entrega: Joi.number(),
     },
     [Segments.PARAMS]: {
       id: Joi.number().required(),

@@ -44,7 +44,7 @@ class Clientes {
   @UpdateDateColumn()
   update_at: Date;
 
-  @OneToMany(() => Pedido, (pedidos) => pedidos.clientes)
+  @OneToMany(() => Pedido, (pedidos) => pedidos.cliente)
   pedidos: Pedido[];
 
   @OneToMany(() => Item, (itens) => itens.clientes)

@@ -8,8 +8,9 @@ export class itens1675449846638 implements MigrationInterface {
         columns: [
           {
             name: "id",
-            type: "number",
+            type: "integer",
             isPrimary: true,
+            isGenerated: true,
             generationStrategy: "increment",
           },
 
@@ -28,6 +29,10 @@ export class itens1675449846638 implements MigrationInterface {
             type: "number",
           },
 
+          {
+            name: "descricao",
+            type: "string",
+          },
           {
             name: "created_at",
             type: "timestamp",

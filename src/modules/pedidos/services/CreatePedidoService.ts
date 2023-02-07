@@ -5,23 +5,24 @@ import Pedido from "../typeorm/entities/Pedido";
 import { PedidoRepository } from "../typeorm/repositories/PedidoRepository";
 
 interface IRequest {
-  cpf: string;
+  cpf_id: string;
   valor: number;
   entrega: number;
 }
 
 class CreatePedidoService {
-  public async execute({ cpf, valor, entrega }: IRequest): Promise<Pedido> {
+  public async execute({ valor, entrega, cpf_id }: IRequest): Promise<Pedido> {
     const pedidosRepository = getCustomRepository(PedidoRepository);
 
-    const pedido = await pedidosRepository.create({
+    if (cpf_id === undefined) {
+      throw new AppError("CPF UNDEFINED");
+    }
+
+    const pedido = pedidosRepository.create({
+      cpf_id,
       entrega,
       valor,
     });
-
-    if (cpf === undefined) {
-      throw new AppError("CPF UNDEFINED");
-    }
 
     await pedidosRepository.save(pedido);
     return pedido;

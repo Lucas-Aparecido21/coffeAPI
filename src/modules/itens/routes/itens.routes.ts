@@ -8,12 +8,12 @@ const itensController = new ItensController();
 itensRouter.get("/", itensController.index);
 
 itensRouter.post(
-  "/",
+  "/:id_pedido",
   celebrate({
     [Segments.BODY]: {
-      id: Joi.number().required(),
       preco: Joi.number().required(),
       quantidade: Joi.number().required(),
+      descricao: Joi.string().required(),
     },
   }),
   itensController.create
