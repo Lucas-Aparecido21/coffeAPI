@@ -8,10 +8,16 @@ interface IRequest {
   cpf_id: string;
   valor: number;
   entrega: number;
+  pagamento: string;
 }
 
 class CreatePedidoService {
-  public async execute({ valor, entrega, cpf_id }: IRequest): Promise<Pedido> {
+  public async execute({
+    valor,
+    entrega,
+    cpf_id,
+    pagamento,
+  }: IRequest): Promise<Pedido> {
     const pedidosRepository = getCustomRepository(PedidoRepository);
 
     if (cpf_id === undefined) {
@@ -22,6 +28,7 @@ class CreatePedidoService {
       cpf_id,
       entrega,
       valor,
+      pagamento,
     });
 
     await pedidosRepository.save(pedido);

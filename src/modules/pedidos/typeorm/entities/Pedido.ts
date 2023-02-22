@@ -27,6 +27,9 @@ class Pedido {
   @Column("decimal")
   entrega: number;
 
+  @Column()
+  pagamento: string;
+
   @CreateDateColumn()
   created_at: Date;
 

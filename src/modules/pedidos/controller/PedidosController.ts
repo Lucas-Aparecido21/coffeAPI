@@ -25,7 +25,7 @@ export default class PedidosController {
 
   public async create(request: Request, response: Response): Promise<Response> {
     try {
-      const { valor, entrega } = request.body;
+      const { valor, entrega, pagamento } = request.body;
       const { cpf_id } = request.params;
       const createPedido = new CreatePedidoService();
 
@@ -33,6 +33,7 @@ export default class PedidosController {
         cpf_id,
         valor,
         entrega,
+        pagamento,
       });
 
       return response.json(pedido);

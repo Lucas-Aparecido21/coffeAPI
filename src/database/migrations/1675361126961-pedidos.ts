@@ -29,6 +29,10 @@ export class pedidos1675361126961 implements MigrationInterface {
           },
 
           {
+            name: "pagamento",
+            type: "string",
+          },
+          {
             name: "created_at",
             type: "timestamp",
             default: "now()",
