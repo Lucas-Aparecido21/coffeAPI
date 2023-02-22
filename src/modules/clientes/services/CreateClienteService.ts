@@ -13,7 +13,7 @@ interface IRequest {
   cidade: string;
   numero: string;
   uf: string;
-  complemento: string;
+  complemento?: string;
 }
 
 class CreateClienteService {
@@ -33,7 +33,8 @@ class CreateClienteService {
     const clienteExist = await clientesRepository.findByID(cpf);
 
     if (clienteExist) {
-      throw new AppError("O cliente com este CPF já existe.");
+      // throw new AppError("O cliente com este CPF já existe.");
+      const clientes = await clientesRepository.findOne(cpf);
     }
 
     const cliente = await clientesRepository.create({

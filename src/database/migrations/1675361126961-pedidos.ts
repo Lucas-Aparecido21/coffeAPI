@@ -47,7 +47,6 @@ export class pedidos1675361126961 implements MigrationInterface {
             referencedTableName: "clientes",
             referencedColumnNames: ["cpf"],
             columnNames: ["cpf_id"],
-            onDelete: "CASCADE",
             onUpdate: "CASCADE",
           },
         ],
