@@ -16,43 +16,13 @@ export default class ClientesController {
 
   public async show(request: Request, response: Response): Promise<Response> {
     {
-      const { cpf, bairro, cep, cidade, nome, numero, rua, telefone, uf } =
-        request.params;
+      const { cpf } = request.params;
       const showCliente = new ShowClienteService();
 
-      const cliente = await showCliente.execute({
-        cpf,
-        bairro,
-        cep,
-        cidade,
-        nome,
-        numero,
-        rua,
-        telefone,
-        uf,
-      });
-
-      const createCliente = new CreateClienteService();
-
-      const clientes = await createCliente.execute({
-        cpf,
-        nome,
-        telefone,
-        cep,
-        bairro,
-        cidade,
-        numero,
-        rua,
-        uf,
-      });
-      if (cliente) {
-        return response.json(cliente);
-      } else {
-        return response.json(clientes);
-      }
+      const cliente = await showCliente.execute({ cpf });
+      return response.json(cliente);
     }
   }
-
   public async create(request: Request, response: Response): Promise<Response> {
     const {
       cpf,
