@@ -23,6 +23,7 @@ pedidosRouter.post(
     [Segments.BODY]: {
       valor: Joi.number().required(),
       entrega: Joi.number().required(),
+      pagamento: Joi.string().required(),
     },
     [Segments.PARAMS]: {
       cpf_id: Joi.string().required(),
@@ -37,6 +38,7 @@ pedidosRouter.put(
     [Segments.BODY]: {
       valor: Joi.number(),
       entrega: Joi.number(),
+      pagamento: Joi.string(),
     },
     [Segments.PARAMS]: {
       id: Joi.number().required(),
