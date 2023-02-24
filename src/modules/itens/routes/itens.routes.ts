@@ -11,9 +11,8 @@ itensRouter.post(
   "/:id_pedido",
   celebrate({
     [Segments.BODY]: {
-      preco: Joi.number().required(),
-      quantidade: Joi.number().required(),
-      descricao: Joi.string().required(),
+      id_item: Joi.string().required(),
+      quantidade: Joi.string().required(),
     },
   }),
   itensController.create

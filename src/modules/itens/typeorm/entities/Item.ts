@@ -15,16 +15,13 @@ class Item {
   id: number;
 
   @Column()
-  id_pedido: number;
-
-  @Column("decimal")
-  preco: number;
-
-  @Column("int")
-  quantidade: number;
+  id_pedido: string;
 
   @Column()
-  descricao: string;
+  id_item: string;
+
+  @Column()
+  quantidade: string;
 
   @ManyToOne(() => Pedido, (pedido) => pedido.itens)
   @JoinColumn({ name: "id_pedido" })

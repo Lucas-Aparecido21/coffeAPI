@@ -16,23 +16,19 @@ export class itens1675449846638 implements MigrationInterface {
 
           {
             name: "id_pedido",
-            type: "number",
+            type: "string",
           },
 
           {
-            name: "preco",
-            type: "number",
+            name: "id_item",
+            type: "string",
           },
 
           {
             name: "quantidade",
-            type: "number",
-          },
-
-          {
-            name: "descricao",
             type: "string",
           },
+
           {
             name: "created_at",
             type: "timestamp",

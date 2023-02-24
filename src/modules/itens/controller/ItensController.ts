@@ -19,17 +19,17 @@ export default class ItensController {
   }
   public async create(request: Request, response: Response): Promise<Response> {
     try {
-      const { preco, quantidade, descricao } = request.body;
+      const { itens } = request.body;
       const { id_pedido } = request.params;
       const addItem = new AddItemSerivce();
 
-      const item = await addItem.execute({
-        id_pedido: Number(id_pedido),
-        preco,
-        quantidade,
-        descricao,
-      });
-      return response.json(item);
+      // const a = JSON.parse(itens);
+
+      // const item = await addItem.execute({
+      //   id_pedido,
+      //   itens,
+      // });
+      return response.json(itens);
     } catch (error) {
       console.error(error);
       return response.status(500).json();
