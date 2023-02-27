@@ -18,7 +18,7 @@ class Item {
   id_pedido: string;
 
   @Column()
-  id_item: string;
+  item: string;
 
   @Column()
   quantidade: string;

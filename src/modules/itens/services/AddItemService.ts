@@ -5,26 +5,25 @@ import Item from "../typeorm/entities/Item";
 
 interface IRequest {
   id_pedido: string;
-  itens: any;
+  itens: [];
 }
 
 class AddItemSerivce {
-  public async execute({ id_pedido }: IRequest): Promise<any> {
-    // const itensRepository = getCustomRepository(ItemRepository);
+  public async execute({ itens }: IRequest): Promise<any> {
+    const itensRepository = getCustomRepository(ItemRepository);
 
-    // await new Promise((resolve) => {
-    //   id_item.map(async (id_item) => {
-    //     const item = itensRepository.create({
-    //       id_pedido,
-    //       id_item,
-    //       quantidade,
-    //     });
+    await new Promise((resolve) => {
+      itens.map(async ({ item, quantidade }) => {
+        const newItem = itensRepository.create({
+          item,
+          quantidade,
+        });
 
-    //     await itensRepository.save(item);
-    //   });
+        await itensRepository.save(newItem);
+      });
 
-    //   resolve;
-    // });
+      resolve;
+    });
     return;
   }
 }

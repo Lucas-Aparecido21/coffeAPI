@@ -16,11 +16,11 @@ export class itens1675449846638 implements MigrationInterface {
 
           {
             name: "id_pedido",
-            type: "string",
+            type: "number",
           },
 
           {
-            name: "id_item",
+            name: "item",
             type: "string",
           },
 

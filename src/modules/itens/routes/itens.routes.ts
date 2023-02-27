@@ -11,8 +11,10 @@ itensRouter.post(
   "/:id_pedido",
   celebrate({
     [Segments.BODY]: {
-      id_item: Joi.string().required(),
-      quantidade: Joi.string().required(),
+      itens: Joi.array().items({
+        item: Joi.string(),
+        quantidade: Joi.string(),
+      }),
     },
   }),
   itensController.create
