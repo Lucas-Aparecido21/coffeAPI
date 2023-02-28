@@ -8,4 +8,10 @@ export class ItemRepository extends Repository<Item> {
 
     return item;
   }
+
+  public async findByIdPedido(id_pedido: number): Promise<Item[] | undefined> {
+    const item = this.find({ where: { id_pedido } });
+
+    return item;
+  }
 }

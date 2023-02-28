@@ -12,6 +12,16 @@ const arraySchema = Joi.array().items(
 );
 itensRouter.get("/", itensController.index);
 
+itensRouter.get(
+  "/:id_pedido",
+  celebrate({
+    [Segments.PARAMS]: {
+      id_pedido: Joi.string().required(),
+    },
+  }),
+  itensController.show
+);
+
 itensRouter.post(
   "/:id_pedido",
   celebrate({
