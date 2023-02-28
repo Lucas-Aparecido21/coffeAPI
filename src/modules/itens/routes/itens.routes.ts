@@ -4,17 +4,19 @@ import ItensController from "../controller/ItensController";
 
 const itensRouter = Router();
 const itensController = new ItensController();
-
+const arraySchema = Joi.array().items(
+  Joi.object({
+    item: Joi.string().required(),
+    quantidade: Joi.string().required(),
+  })
+);
 itensRouter.get("/", itensController.index);
 
 itensRouter.post(
   "/:id_pedido",
   celebrate({
     [Segments.BODY]: {
-      itens: Joi.array().items({
-        item: Joi.string(),
-        quantidade: Joi.string(),
-      }),
+      itens: arraySchema,
     },
   }),
   itensController.create

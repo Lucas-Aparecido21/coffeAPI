@@ -9,7 +9,7 @@ interface IRequest {
 }
 
 class AddItemSerivce {
-  public async execute({ itens }: IRequest): Promise<any> {
+  public async execute({ itens, id_pedido }: IRequest): Promise<any> {
     const itensRepository = getCustomRepository(ItemRepository);
 
     await new Promise((resolve) => {
@@ -17,6 +17,7 @@ class AddItemSerivce {
         const newItem = itensRepository.create({
           item,
           quantidade,
+          id_pedido,
         });
 
         await itensRepository.save(newItem);
