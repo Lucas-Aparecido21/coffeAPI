@@ -75,9 +75,13 @@ export default class ClientesController {
   }
 
   public async delete(request: Request, response: Response): Promise<Response> {
-    const { cpf } = request.params;
-    const deleteCliente = new DeleteClienteService();
-    await deleteCliente.execute({ cpf });
+    try {
+      const { cpf } = request.params;
+      const deleteCliente = new DeleteClienteService();
+      await deleteCliente.execute({ cpf });
+    } catch (error) {
+      console.error(error);
+    }
     return response.json([]);
   }
 }
