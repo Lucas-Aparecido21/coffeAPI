@@ -7,4 +7,9 @@ export class PedidoRepository extends Repository<Pedido> {
     const product = this.findOne({ where: { id } });
     return product;
   }
+  public async findByClient(cpf_id: string): Promise<Pedido[] | undefined> {
+    const pedido = this.find({ where: { cpf_id } });
+
+    return pedido;
+  }
 }

@@ -4,14 +4,22 @@ import PedidosController from "../controller/PedidosController";
 
 const pedidosRouter = Router();
 const pedidosController = new PedidosController();
-
+// const arraySchema = Joi.array().items(
+//   Joi.object({
+//     id: Joi.string().required(),
+//     cpf_id: Joi.string().required(),
+//     valor: Joi.number().required(),
+//     entrega: Joi.number().required(),
+//     pagamento: Joi.string().required(),
+//   })
+// );
 pedidosRouter.get("/", pedidosController.index);
 
 pedidosRouter.get(
-  "/:id",
+  "/:cpf_id",
   celebrate({
     [Segments.PARAMS]: {
-      id: Joi.number().required(),
+      cpf_id: Joi.number().required(),
     },
   }),
   pedidosController.show
