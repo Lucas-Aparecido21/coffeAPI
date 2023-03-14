@@ -37,7 +37,11 @@ class CreateClienteService {
       const clientes = await clientesRepository.findOne(cpf);
     }
 
-    const cliente = await clientesRepository.create({
+    if (cep.length < 8) {
+      throw new AppError("CEP inválido");
+    }
+
+    const cliente = clientesRepository.create({
       cpf,
       nome,
       telefone,
@@ -50,6 +54,7 @@ class CreateClienteService {
     });
 
     await clientesRepository.save(cliente);
+
     return cliente;
   }
 }

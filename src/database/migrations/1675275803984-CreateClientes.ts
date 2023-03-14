@@ -9,7 +9,7 @@ export class CreateClientes1675275803984 implements MigrationInterface {
         columns: [
           {
             name: "cpf",
-            type: "string",
+            type: "varchar",
             isPrimary: true,
             isUnique: true,
           },
@@ -21,11 +21,11 @@ export class CreateClientes1675275803984 implements MigrationInterface {
 
           {
             name: "telefone",
-            type: "string",
+            type: "varchar",
           },
           {
             name: "cep",
-            type: "string",
+            type: "varchar",
           },
           {
             name: "rua",
@@ -45,7 +45,7 @@ export class CreateClientes1675275803984 implements MigrationInterface {
           },
           {
             name: "numero",
-            type: "string",
+            type: "varchar",
           },
           {
             name: "complemento",
